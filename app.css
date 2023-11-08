@@ -1,0 +1,58 @@
+:root {
+    --background-color: #274653;
+    --title-color: #e9c46a;
+    --input-color: #299d8f;
+    --submit-color: #e76f51;
+    --cell-color: #41455d;
+    --white-color: rgb(255, 255, 255);
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.title {
+    color: var(--title-color);
+    font-size: 3.5rem;
+}
+
+
+#question {
+    color: var(--white-color);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.inputField {
+    background-color: var(--input-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 200px;
+}
+
+::-webkit-input-placeholder {
+    color: var(--white-color);
+    opacity: .5;
+}
+
+#submit {
+    background-color: var(--submit-color);
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    width: 150px;
+}
+
+.gap {
+    gap: 15px
+}
