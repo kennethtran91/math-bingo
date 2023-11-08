@@ -14,8 +14,9 @@
             width: 120px;
             height: 120px;
             text-align: center;
-            font-size: 20px;
+            font-size: 3rem;
             background-color: var(--cell-color);
+            color: var(--white-color)
         }
 
         .marked {
@@ -27,15 +28,22 @@
 
 <body>
     <div class="container flex">
-        <h1 class="title">MATH BINGO</h1>
         <div class="flex gap">
-            <p id="question">What is 8 + 10?</p>
-            <input class="inputField" type="text" id="answer" placeholder="enter your answer">
-            <button id="submit">SUBMIT</button>
+            <div class="bingo flex">
+                <h1 class="title">BINGO!</h1>
+                <h2 class="bold">You've won!</h2>
+                <button id="newgame">New Game</button>
+            </div>
+            <div class="flex gap">
+                <h1 class="title">MATH BINGO</h1>
+                <p id="question">What is 8 + 10?</p>
+                <input class="inputField" type="text" id="answer" placeholder="enter your answer">
+                <button id="submit">SUBMIT</button>
+            </div>
         </div>
         <table>
             <tr>
-                <td id="cell00"></td>
+                <td id="cell00">1</td>
                 <td id="cell01"></td>
                 <td id="cell02"></td>
             </tr>
@@ -51,6 +59,8 @@
             </tr>
         </table>
     </div>
+
+    <script src="/app.js"></script>
 </body>
 
 </html>
