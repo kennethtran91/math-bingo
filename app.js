@@ -7,7 +7,7 @@ const bingoSection = document.querySelector(".bingo");
 const newgameBtn = document.getElementById("newgame");
 const submitBtn = document.getElementById("submit")
 
-let num1, num2;
+//let num1, num2;
 
 const bingoRows = [
     [0, 1, 2],
@@ -38,18 +38,10 @@ function generateQuestion() {
     const targetNumber = [...usedNumbers][Math.floor(Math.random() * usedNumbers.size)];
     // Find two numbers whose sum equals the targetNumber
     let num1, num2;
-    for (const num of usedNumbers) {
-        const complement = targetNumber - num;
-        if (usedNumbers.has(complement)) {
-            num1 = num;
-            num2 = complement;
-            break;
-        }
-    }
-    // If num1 and num2 are still undefined, retry the function
-    if (num1 === undefined || num2 === undefined) {
-        return generateQuestion();
-    }
+
+    num1 = Math.floor(Math.random() * targetNumber);
+    num2 = targetNumber - num1;
+
     return `What is ${num1} + ${num2}?`;
 }
 
@@ -63,10 +55,9 @@ function generateNextQuestion() {
 
 
 //Functon to handle click
-function NewGame() {
+function newGame() {
     handleHidden();
     usedNumbers.clear();
-    console.log(usedNumbers);
     generateRandomNumbers();
     generateNextQuestion();
 }
@@ -79,7 +70,7 @@ function displayBingo() {
     bingoSection.classList.remove("hidden");
 }
 
-newgameBtn.addEventListener("click", NewGame);
+newgameBtn.addEventListener("click", newGame);
 submitBtn.addEventListener("click", displayBingo);
 
 // Initialize the game
