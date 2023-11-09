@@ -38,10 +38,8 @@ function generateQuestion() {
     const targetNumber = [...usedNumbers][Math.floor(Math.random() * usedNumbers.size)];
     // Find two numbers whose sum equals the targetNumber
     let num1, num2;
-
     num1 = Math.floor(Math.random() * targetNumber);
     num2 = targetNumber - num1;
-
     return `What is ${num1} + ${num2}?`;
 }
 
