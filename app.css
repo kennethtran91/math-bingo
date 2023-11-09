@@ -1,0 +1,122 @@
+/*======= Variables CSS =======*/
+:root {
+    --background-color: #274653;
+    --title-color: #e9c46a;
+    --input-color: #299d8f;
+    --submit-color: #e76f51;
+    --cell-color: #41455d;
+    --white-color: rgb(255, 255, 255);
+
+    --bingo-color: #e76f51;
+    --youwon-color: #e9c46a;
+    --newgame-color: #00b4d8;
+}
+
+/*======= BASE =======*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/*======= APP =======*/
+.container {
+    height: 100vh;
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    color: var(--title-color);
+    font-size: 3.5rem;
+}
+
+
+#question {
+    color: var(--white-color);
+    font-size: 2rem;
+}
+
+.inputField {
+    background-color: var(--input-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.inputField::placeholder {
+    color: var(--white-color);
+    opacity: 0.5;
+}
+
+#submit,
+#newgame {
+    background-color: var(--submit-color);
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.gap {
+    gap: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+/*-- BINGO --*/
+.bingo {
+    position: absolute;
+    width: 400px;
+    height: 210px;
+    background-color: #299d8f;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.bingo .title {
+    color: var(--bingo-color);
+    font-size: 3.5rem;
+}
+
+.bingo h2 {
+    color: var(--youwon-color);
+}
+
+#newgame {
+    background-color: var(--newgame-color);
+    color: var(--white-color);
+    font-size: 1.4rem;
+    width: 200px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.bold {
+    font-size: 2.5rem;
+}
