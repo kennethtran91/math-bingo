@@ -3,6 +3,7 @@
 
 <head>
     <title>Math Bingo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="app.css">
     <link href='https://fonts.googleapis.com/css?family=Jockey One' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
@@ -13,11 +14,18 @@
     <div class="firework"></div>
     <div class="firework"></div>
     <div class="firework"></div>
-    <h1>Math Bingo</h1>
-    <div class="flex-container">
-        <p id="question"></p>
-        <input type="text" id="answer" placeholder="enter your answer">
-        <!-- <button id="submit">SUBMIT</button> -->
+        <h1>Math Bingo</h1>
+        <span id="question">        
+            <p id="question"></p>
+        </span>
+        <div class="flex-container">
+
+        <div class="button-container">
+            <button class="pushable item" id="answer"><span class="front">12</span></button>
+            <button class="pushable item" id="answer"><span class="front">12</span></button>
+            <button class="pushable item" id="answer"><span class="front">12</span></button>
+            <button class="pushable item" id="answer"><span class="front">12</span></button>
+        </div>
     </div>
     <div id="win-message">
         <span class="message">You Won!</span><br />
@@ -44,7 +52,6 @@
             <td id="cell22"></td>
         </tr>
     </table>
-
     <script src="app.js"></script>
 </body>
 
