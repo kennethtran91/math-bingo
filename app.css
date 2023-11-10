@@ -1,122 +1,284 @@
-/*======= Variables CSS =======*/
-:root {
-    --background-color: #274653;
-    --title-color: #e9c46a;
-    --input-color: #299d8f;
-    --submit-color: #e76f51;
-    --cell-color: #41455d;
-    --white-color: rgb(255, 255, 255);
-
-    --bingo-color: #e76f51;
-    --youwon-color: #e9c46a;
-    --newgame-color: #00b4d8;
-}
-
-/*======= BASE =======*/
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.html {
-    scroll-behavior: smooth;
-}
-
 body {
-    background-color: var(--background-color);
-}
-
-/*======= APP =======*/
-.container {
-    height: 100vh;
-    position: relative;
-}
-
-.flex {
+    background-color: #264653;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* height: 100vh; */
+    margin: 0;
+    font-family: 'JetBrains Mono';
 }
 
-.title {
-    color: var(--title-color);
-    font-size: 3.5rem;
+table {
+    border-collapse: collapse;
+    border: solid 1px;
+    border-color: #fff;
+    font-family: 'JetBrains Mono';
+    color: #fff;
+    font-size: 55px;
 }
 
-
-#question {
-    color: var(--white-color);
-    font-size: 2rem;
-}
-
-.inputField {
-    background-color: var(--input-color);
-    color: var(--white-color);
-    border: none;
-    border-radius: 2px;
-    padding: 5px 10px;
+td {
+    border: 1px solid #fff;
+    width: 100px;
+    height: 100px;
     text-align: center;
-    width: 200px;
 }
 
-.inputField::placeholder {
-    color: var(--white-color);
-    opacity: 0.5;
+.marked {
+    background-color: #19C18F;
 }
 
-#submit,
-#newgame {
-    background-color: var(--submit-color);
+h1 {
+    font-family: "Jockey One";
+    font-size: 80px;
+    color: #E9C46A;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+#win-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+    background-color: #94d2bd;
+}
+
+#lose-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+    background-color: #e76f51;
+}
+.message {
+    padding-bottom: 10px;
+    color: #fff;
+}
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+    margin: 0;
+}
+#question {
+    font-family: 'JetBrains Mono';
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: #2A9D8F;
+    font-family: 'JetBrains Mono';
     border: none;
     border-radius: 2px;
-    padding: 5px 10px;
-    width: 150px;
-    cursor: pointer;
+    height: 31px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-.gap {
-    gap: 15px;
+input:focus::placeholder {
+    opacity: 15%;
 }
 
-.hidden {
+button {
+    background-color: #E76F51;
+    color: #264653;
+    font-family: 'JetBrains Mono';
+    font-size: 12px;
+    border: none;
+    border-radius: 3px;
+    height: 27px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin-bottom: 5px;
+}
+
+/* or, for legacy browsers */
+
+::-webkit-input-placeholder {
+    text-align: center;
+    color:#EDF2F4;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+    color:#EDF2F4;
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+    color:#EDF2F4;
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+    color:#EDF2F4;
+ }
+
+ @keyframes firework {
+    0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
+    50% { width: 0.5vmin; opacity: 1; }
+    100% { width: var(--finalSize); opacity: 0; }
+  }
+  
+  /* @keyframes fireworkPseudo {
+    0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
+    50% { width: 0.5vmin; opacity: 1; }
+    100% { width: var(--finalSize); opacity: 0; }
+  }
+   */
+  .firework,
+  .firework::before,
+  .firework::after
+  {
     display: none;
-}
-
-/*-- BINGO --*/
-.bingo {
+    --initialSize: 0.5vmin;
+    --finalSize: 45vmin;
+    --particleSize: 0.2vmin;
+    --color1: yellow;
+    --color2: khaki;
+    --color3: white;
+    --color4: lime;
+    --color5: gold;
+    --color6: mediumseagreen;
+    --y: -30vmin;
+    --x: -50%;
+    --initialY: 60vmin;
+    content: "";
+    animation: firework 2s infinite;
     position: absolute;
-    width: 400px;
-    height: 210px;
-    background-color: #299d8f;
-    border-radius: 20px;
-    z-index: 1;
-}
-
-.bingo .title {
-    color: var(--bingo-color);
-    font-size: 3.5rem;
-}
-
-.bingo h2 {
-    color: var(--youwon-color);
-}
-
-#newgame {
-    background-color: var(--newgame-color);
-    color: var(--white-color);
-    font-size: 1.4rem;
-    width: 200px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.bold {
-    font-size: 2.5rem;
-}
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, var(--y));
+    width: var(--initialSize);
+    aspect-ratio: 1;
+    background: 
+      /*
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 100%,
+      */
+      
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+      radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+      radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+      radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+      
+      /* bottom right */
+      radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+      radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+      radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+      radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+      radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+      
+      /* bottom left */
+      radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+      radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+      radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+      radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+      radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+      radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+      
+      /* top left */
+      radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+      radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+      radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+      radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+      radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+      radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+      
+      /* top right */
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+      radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%
+      ;
+    background-size: var(--initialSize) var(--initialSize);
+    background-repeat: no-repeat;
+  }
+  
+  .firework::before {
+    --x: -50%;
+    --y: -50%;
+    --initialY: -50%;
+  /*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
+    transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
+  /*   animation: fireworkPseudo 2s infinite; */
+  }
+  
+  .firework::after {
+    --x: -50%;
+    --y: -50%;
+    --initialY: -50%;
+  /*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
+    transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
+  /*   animation: fireworkPseudo 2s infinite; */
+  }
+  
+  .firework:nth-child(2) {
+    --x: 30vmin;
+  }
+  
+  .firework:nth-child(2),
+  .firework:nth-child(2)::before,
+  .firework:nth-child(2)::after {
+    --color1: pink;
+    --color2: violet;
+    --color3: fuchsia;
+    --color4: orchid;
+    --color5: plum;
+    --color6: lavender;  
+    --finalSize: 40vmin;
+    left: 30%;
+    top: 60%;
+    animation-delay: -0.25s;
+  }
+  
+  .firework:nth-child(3) {
+    --x: -30vmin;
+    --y: -50vmin;
+  }
+  
+  .firework:nth-child(3),
+  .firework:nth-child(3)::before,
+  .firework:nth-child(3)::after {
+    --color1: cyan;
+    --color2: lightcyan;
+    --color3: lightblue;
+    --color4: PaleTurquoise;
+    --color5: SkyBlue;
+    --color6: lavender;
+    --finalSize: 35vmin;
+    left: 70%;
+    top: 60%;
+    animation-delay: -0.4s;
+  }
