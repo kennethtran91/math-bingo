@@ -10,6 +10,8 @@
     --bingo-color: #e76f51;
     --youwon-color: #e9c46a;
     --newgame-color: #00b4d8;
+
+    --marked-cell: #19C18F;
 }
 
 /*======= BASE =======*/
@@ -31,6 +33,21 @@
 body {
     background-color: var(--background-color);
     font-family: 'JetBrains Mono';
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    font-size: 3rem;
+    background-color: var(--cell-color);
+    color: var(--white-color)
 }
 
 /*======= APP =======*/
@@ -120,4 +137,8 @@ body {
 
 .bold {
     font-size: 2.5rem;
+}
+
+.marked {
+    background-color: var(--marked-cell);
 }
