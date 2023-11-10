@@ -137,7 +137,7 @@ button {
   transform: translateY(-6px);
 }
 
-.pushable:active .front {
+.pushable:hover .front {
   transform: translateY(-2px);
 }
 
