@@ -142,3 +142,18 @@ td {
 .marked {
     background-color: var(--marked-cell);
 }
+
+/*======= Responsive =======*/
+@media (max-width: 400px) {
+    td {
+        width: 100px;
+        height: 100px;
+    }
+
+}
+
+@media (max-width: 340px) {
+    .title {
+        font-size: 3rem;
+    }
+}
