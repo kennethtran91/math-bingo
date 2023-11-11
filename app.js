@@ -41,19 +41,6 @@ function generateRandomNumbers() {
         cells[i].textContent = randomNum;
     }
 }
-console.log(usedNumbers);
-// Function to generate a random addition question
-// function generateQuestion() {
-//   // Pick a random number from usedNumbers Set
-//   const targetNumber = [...usedNumbers][
-//     Math.floor(Math.random() * usedNumbers.size)
-//   ];
-//   // Find two numbers whose sum equals the targetNumber
-//   // let num1, num2; //these variables need to be global so submitAnswer() can access and check the answer
-//   num1 = Math.floor(Math.random() * targetNumber);
-//   num2 = targetNumber - num1;
-//   return [num1, num2];
-// }
 
 // Function to generate a random unique answer
 function generateUniqueAnswer() {
