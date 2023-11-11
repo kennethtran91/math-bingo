@@ -89,15 +89,42 @@ td {
     opacity: 0.5;
 }
 
+.guess-answer-btns {
+    width: 400px;
+
+}
+
 #submit,
 #newgame,
-#play {
+#play,
+.guess-btn {
     background-color: var(--submit-color);
     border: none;
     border-radius: 2px;
     padding: 5px 10px;
     width: 150px;
     cursor: pointer;
+}
+
+#newgame,
+#play,
+.guess-btn {
+    background-color: var(--newgame-color);
+    color: var(--white-color);
+    font-size: 1.4rem;
+    width: 200px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.guess-btn {
+    background-color: var(--input-color);
+    width: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.guess-btn:hover {
+    background-color: #ffb706;
 }
 
 .gap {
@@ -107,6 +134,9 @@ td {
 .hidden {
     display: none;
 }
+
+.top-buttons,
+.bottom-buttons {}
 
 /*-- BINGO --*/
 .bingo {
@@ -127,15 +157,6 @@ td {
     color: var(--youwon-color);
 }
 
-#newgame,
-#play {
-    background-color: var(--newgame-color);
-    color: var(--white-color);
-    font-size: 1.4rem;
-    width: 200px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
 
 .bold {
     font-size: 2.5rem;
