@@ -8,6 +8,9 @@ const answerInput = document.getElementById("answer");
 const bingoSection = document.querySelector(".bingo");
 const newgameBtn = document.getElementById("newgame");
 const submitBtn = document.getElementById("submit");
+const playBtn = document.getElementById("play");
+const gameScreen = document.querySelector(".game-screen");
+const loadingScreen = document.querySelector(".loading");
 
 let num1, num2, answer; //set this variables to be global
 let markedCells = new Set();
@@ -17,26 +20,26 @@ let gameEnded = false;
 // ];
 
 const bingoRows = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
 ];
 
 // Function to generate and set random numbers from 1 to 20 in each cell
 function generateRandomNumbers() {
-  for (let i = 0; i < cells.length; i++) {
-    let randomNum;
-    do {
-      randomNum = Math.floor(Math.random() * 20) + 1;
-    } while (usedNumbers.has(randomNum));
-    usedNumbers.add(randomNum);
-    cells[i].textContent = randomNum;
-  }
+    for (let i = 0; i < cells.length; i++) {
+        let randomNum;
+        do {
+            randomNum = Math.floor(Math.random() * 20) + 1;
+        } while (usedNumbers.has(randomNum));
+        usedNumbers.add(randomNum);
+        cells[i].textContent = randomNum;
+    }
 }
 console.log(usedNumbers);
 // Function to generate a random addition question
@@ -54,27 +57,27 @@ console.log(usedNumbers);
 
 // Function to generate a random unique answer
 function generateUniqueAnswer() {
-  do {
-    answer = [...usedNumbers][Math.floor(Math.random() * usedNumbers.size)];
-  } while (usedAnswers.has(answer));
+    do {
+        answer = [...usedNumbers][Math.floor(Math.random() * usedNumbers.size)];
+    } while (usedAnswers.has(answer));
 
-  usedAnswers.add(answer);
-  console.log(answer, "answer");
-  return answer;
+    usedAnswers.add(answer);
+    console.log(answer, "answer");
+    return answer;
 }
 
 // Function to generate and display the next question
 function generateNextQuestion(targetNumber) {
-  // Generate two random numbers
-  num1 = Math.floor(Math.random() * targetNumber);
-  num2 = targetNumber - num1;
+    // Generate two random numbers
+    num1 = Math.floor(Math.random() * targetNumber);
+    num2 = targetNumber - num1;
 
-  // Construct the addition expression
-  const additionExpression = `${num1} + ${num2}`;
-  questionText.textContent = "What is " + additionExpression + "?";
+    // Construct the addition expression
+    const additionExpression = `${num1} + ${num2}`;
+    questionText.textContent = "What is " + additionExpression + "?";
 
-  // Return an object with the expression and the correct answer
-  return additionExpression;
+    // Return an object with the expression and the correct answer
+    return additionExpression;
 }
 
 // Function to handle answer submission
@@ -83,55 +86,62 @@ function generateNextQuestion(targetNumber) {
 // then set to next question
 
 function submitAnswer() {
-  const playerAnswer = parseInt(answerInput.value);
+    const playerAnswer = parseInt(answerInput.value);
 
-  if (!isNaN(playerAnswer)) {
-    if (playerAnswer === answer) {
-      // Correct answer
-      cells.forEach((cell, index) => {
-        if (cell.textContent == answer && !cell.classList.contains("marked")) {
-          cell.classList.add("marked");
-          markedCells.add(index);
+    if (!isNaN(playerAnswer)) {
+        if (playerAnswer === answer) {
+            // Correct answer
+            cells.forEach((cell, index) => {
+                if (cell.textContent == answer && !cell.classList.contains("marked")) {
+                    cell.classList.add("marked");
+                    markedCells.add(index);
+                }
+            });
+
+            // usedAnswers.delete(currentAnswer); // Remove the answer from usedAnswers
+            generateNextQuestion(generateUniqueAnswer());
+            answerInput.value = ""; //reset input field
+            console.log(usedAnswers);
+        } else {
+            // Wrong answer
+            questionText.textContent = "Wrong answer!";
+            answerInput.value = "";
+            // endGame();
         }
-      });
-
-      // usedAnswers.delete(currentAnswer); // Remove the answer from usedAnswers
-      generateNextQuestion(generateUniqueAnswer());
-      answerInput.value = ""; //reset input field
-      console.log(usedAnswers);
-    } else {
-      // Wrong answer
-      questionText.textContent = "Wrong answer!";
-      answerInput.value = "";
-      // endGame();
     }
-  }
 }
 
 //Functon to handle click
 function newGame() {
-  handleHidden();
-  usedNumbers.clear();
-  generateRandomNumbers();
-  generateNextQuestion();
+    handleHidden();
+    usedNumbers.clear();
+    generateRandomNumbers();
+    generateNextQuestion();
 }
 
 function handleHidden() {
-  bingoSection.classList.add("hidden");
+    bingoSection.classList.add("hidden");
 }
 
 function displayBingo() {
-  bingoSection.classList.remove("hidden");
+    bingoSection.classList.remove("hidden");
 }
+
+function loadGameScreen() {
+    loadingScreen.classList.add("hidden");
+    gameScreen.classList.remove("hidden");
+}
+
+playBtn.addEventListener("click", loadGameScreen);
 
 newgameBtn.addEventListener("click", newGame);
 // submitBtn.addEventListener("click", displayBingo);
 
 // Event listener for Enter key press in the answer input field
 answerInput.addEventListener("keyup", (event) => {
-  if (!gameEnded && event.key === "Enter") {
-    submitAnswer();
-  }
+    if (!gameEnded && event.key === "Enter") {
+        submitAnswer();
+    }
 });
 
 // Initialize the game

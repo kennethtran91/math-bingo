@@ -51,7 +51,7 @@ td {
 }
 
 /*======= APP =======*/
-.container {
+.game-screen {
     height: 100vh;
     position: relative;
 }
@@ -90,7 +90,8 @@ td {
 }
 
 #submit,
-#newgame {
+#newgame,
+#play {
     background-color: var(--submit-color);
     border: none;
     border-radius: 2px;
@@ -126,7 +127,8 @@ td {
     color: var(--youwon-color);
 }
 
-#newgame {
+#newgame,
+#play {
     background-color: var(--newgame-color);
     color: var(--white-color);
     font-size: 1.4rem;
@@ -143,11 +145,28 @@ td {
     background-color: var(--marked-cell);
 }
 
+/*======= Loading =======*/
+.loading {
+    height: 100vh;
+}
+
+.loading h2 {
+    color: #19C18F;
+}
+
+#play {
+    background-color: #e76f51;
+}
+
 /*======= Responsive =======*/
 @media (max-width: 400px) {
     td {
         width: 100px;
         height: 100px;
+    }
+
+    .loading h2 {
+        font-size: 1.3rem;
     }
 
 }

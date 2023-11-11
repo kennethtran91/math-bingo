@@ -12,39 +12,45 @@
 </head>
 
 <body>
-    <div class="container flex">
-        <div class="flex gap">
-            <div class="bingo flex hidden">
-                <h1 class="title">BINGO!</h1>
-                <h2 class="bold">You've won!</h2>
-                <button id="newgame">New Game</button>
-            </div>
-            <div class="flex gap">
-                <h1 class="title">MATH BINGO</h1>
-                <p id="question"></p>
-                <input class="inputField" type="text" id="answer" placeholder="enter your answer">
-                <!-- <button id="submit">SUBMIT</button> -->
-            </div>
+    <div class="app">
+        <div class="loading flex">
+            <h1 class="title">MATH BINGO</h1>
+            <h2>"Count, Connect, Cheer"</h2>
+            <button id="play">Let's Play!</button>
         </div>
-        <table>
-            <tr>
-                <td id="cell00"></td>
-                <td id="cell01"></td>
-                <td id="cell02"></td>
-            </tr>
-            <tr>
-                <td id="cell10"></td>
-                <td id="cell11"></td>
-                <td id="cell12"></td>
-            </tr>
-            <tr>
-                <td id="cell20"></td>
-                <td id="cell21"></td>
-                <td id="cell22"></td>
-            </tr>
-        </table>
+        <div class="game-screen flex hidden">
+            <div class="flex gap">
+                <div class="bingo flex hidden">
+                    <h1 class="title">BINGO!</h1>
+                    <h2 class="bold">You've won!</h2>
+                    <button id="newgame">New Game</button>
+                </div>
+                <div class="flex gap">
+                    <h1 class="title">MATH BINGO</h1>
+                    <p id="question"></p>
+                    <input class="inputField" type="text" id="answer" placeholder="enter your answer">
+                    <!-- <button id="submit">SUBMIT</button> -->
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <td id="cell00"></td>
+                    <td id="cell01"></td>
+                    <td id="cell02"></td>
+                </tr>
+                <tr>
+                    <td id="cell10"></td>
+                    <td id="cell11"></td>
+                    <td id="cell12"></td>
+                </tr>
+                <tr>
+                    <td id="cell20"></td>
+                    <td id="cell21"></td>
+                    <td id="cell22"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-
     <script src="/app.js"></script>
 </body>
 
