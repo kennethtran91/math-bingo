@@ -84,6 +84,7 @@ function generateAnswerButtonsHTML(randomNumber) {
   const buttonElement = document.createElement("button");
   buttonElement.className = "button item";
   buttonElement.id = "answer";
+  buttonElement.type = "button";
 
   // buttonElement.appendChild(spanElement);
 
