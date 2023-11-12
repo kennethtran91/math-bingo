@@ -6,7 +6,7 @@ const answerSets = new Set();
 const questionText = document.getElementById("question");
 const answerButton = document.querySelector(".button-container");
 // Container to hold the buttons
-const buttonContainer = document.getElementById('buttonContainer');
+const buttonContainer = document.getElementById("buttonContainer");
 
 const bingoSection = document.querySelector(".bingo");
 const newgameBtn = document.getElementById("newgame");
@@ -79,36 +79,30 @@ function generateNextQuestion(targetNumber) {
   return additionExpression;
 }
 
-
 function generateAnswerButtonsHTML(randomNumber) {
-  
-    // Create the button element
-    const buttonElement = document.createElement('button');
-    buttonElement.className = 'pushable item';
-    buttonElement.id = 'answer';
+  // Create the button element
+  const buttonElement = document.createElement("button");
+  buttonElement.className = "button item";
+  buttonElement.id = "answer";
 
-    // Create the span element
-    const spanElement = document.createElement('span');
-    spanElement.className = 'front';
+  // buttonElement.appendChild(spanElement);
 
-    buttonElement.appendChild(spanElement);
+  // Append the button element to the document
+  document.getElementById("buttonContainer").appendChild(buttonElement);
+  buttonElement.textContent = `${randomNumber}`;
 
-    // Append the button element to the document
-    document.getElementById('buttonContainer').appendChild(buttonElement);
-    spanElement.textContent = `${randomNumber}`;
+  // Append the span element as a child of the button element
+  // buttonElement.appendChild(spanElement);
 
-    // Append the span element as a child of the button element
-    buttonElement.appendChild(spanElement);
-
-    // Append the button element to the container
-    buttonContainer.appendChild(buttonElement);
+  // Append the button element to the container
+  buttonContainer.appendChild(buttonElement);
 }
 
 // Generate 3 randoms answers
 function generateAnswerButtons() {
   const randomNumbers = [];
-  answerButton.innerHTML = ''; // Clear previous content
-  console.log(randomNumbers, "should be a empty array random answers")
+  answerButton.innerHTML = ""; // Clear previous content
+  console.log(randomNumbers, "should be a empty array random answers");
 
   for (let i = 0; i < 4; i++) {
     const randomNumber = Math.floor(Math.random() * 20) + 1;
@@ -121,14 +115,14 @@ function generateAnswerButtons() {
   randomNumbers.splice(randomIndex, 0, answer);
 
   // Check for duplicates and replace them with unique numbers
-for (let i = 0; i < randomNumbers.length; i++) {
-  for (let j = i + 1; j < randomNumbers.length; j++) {
+  for (let i = 0; i < randomNumbers.length; i++) {
+    for (let j = i + 1; j < randomNumbers.length; j++) {
       if (randomNumbers[i] === randomNumbers[j]) {
-          // Replace duplicate with a new unique number
-          randomNumbers[j] = generateUniqueRandomNumber(randomNumbers);
+        // Replace duplicate with a new unique number
+        randomNumbers[j] = generateUniqueRandomNumber(randomNumbers);
       }
+    }
   }
-}
 
   for (let i = 0; i < 4; i++) {
     generateAnswerButtonsHTML(randomNumbers[i]);
@@ -140,11 +134,10 @@ for (let i = 0; i < randomNumbers.length; i++) {
 function generateUniqueRandomNumber(existingNumbers) {
   let newNumber;
   do {
-      newNumber = Math.floor(Math.random() * 10) + 1; // You can adjust the range as needed
+    newNumber = Math.floor(Math.random() * 10) + 1; // You can adjust the range as needed
   } while (existingNumbers.includes(newNumber));
   return newNumber;
 }
-
 
 // Function to handle answer submission
 // check user input, if it is corrected, then add .marked class into the cell
@@ -200,4 +193,3 @@ function displayBingo() {
 generateRandomNumbers();
 generateNextQuestion(generateUniqueAnswer());
 generateAnswerButtons();
-

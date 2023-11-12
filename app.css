@@ -85,17 +85,25 @@ p {
   align-items: center;
   justify-content: center;
   margin: 0.5rem;
+
 }
 
 .button-container {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
   gap: .5rem;
+  margin: 1rem;
 }
 
 .item {
-  flex-basis: 50%;
+  min-width: 140px;
+  border-radius: 12px;
+  display: grid;
+  align-items: center;
+  box-sizing: border-box;
+
 }
 
 #question {
@@ -120,61 +128,97 @@ input:focus::placeholder {
   opacity: 15%;
 }
 
-button {
+/* button {
   font-family: 'JetBrains Mono';
-  width: 100%;                   /* occupy 100% width of li container */
-  height: auto;
-}
-
-.pushable {
+  width: 163px;
+  height: 69px;
   background: hsl(173, 58%, 39%);
-  border-radius: 12px;
   border: none;
-  padding: 0;
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  font-size: 1.25rem;
+  color: white;
+} */
+
+/* CSS */
+.button {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
   cursor: pointer;
-  outline-offset: 4px;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
 }
 
-.front {
-  display: block;
+.button:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button:main,
+.button:focus {
+  user-select: auto;
+}
+
+.button:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button:disabled {
+  cursor: auto;
+}
+
+.button:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+
+
+/* .front {
   padding: 12px 42px;
   border-radius: 12px;
   font-size: 1.25rem;
   background: hsl(173, 58%, 47%);
   color: white;
-  transform: translateY(-6px);
-}
+} */
 
-.pushable:hover .front {
-  transform: translateY(-2px);
-}
 
 .message {
   margin-bottom: 5px;
-}
-
-/* or, for legacy browsers */
-
-::-webkit-input-placeholder {
-  text-align: center;
-  color: #EDF2F4;
-}
-
-:-moz-placeholder {
-  /* Firefox 18- */
-  text-align: center;
-  color: #EDF2F4;
-}
-
-::-moz-placeholder {
-  /* Firefox 19+ */
-  text-align: center;
-  color: #EDF2F4;
-}
-
-:-ms-input-placeholder {
-  text-align: center;
-  color: #EDF2F4;
 }
 
 @keyframes firework {
@@ -350,9 +394,13 @@ button {
   }
 
   .button-container {
-    display: flex;
+    /* display: flex;
     gap: 1em;
-    flex-flow: wrap;
+    flex-flow: wrap; */
+    /* display:grid;
+    grid-template-columns: 200px 200px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px; */
   }
 
   .item {
