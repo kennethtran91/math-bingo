@@ -170,6 +170,7 @@ input:focus::placeholder {
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
+  transition: all .2s ease-in-out;
 }
 
 .button:after {
@@ -204,6 +205,8 @@ input:focus::placeholder {
 .button:active {
   border-width: 4px 0 0;
   background: none;
+  transform: scale(1.1);
+	transition: .1s;
 }
 
 
