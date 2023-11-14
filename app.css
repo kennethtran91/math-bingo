@@ -32,7 +32,7 @@
 }
 
 body {
-  background-color: var(--background-color);
+  background-image: linear-gradient(to bottom, var(--background-color), #0066b2);;
   font-family: "JetBrains Mono";
   position: relative;
 }
@@ -67,14 +67,19 @@ td {
 
 .title {
   font-family: "Jockey One";
-  color: var(--title-color);
-  font-size: 3.5rem;
+  font-size: 5rem;
+  background-image: linear-gradient(to left, var(--title-color), #e76f51);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 #question {
   color: var(--white-color);
   font-size: 2rem;
 }
+
+/* button style */
 .buttons-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -85,7 +90,6 @@ td {
 
 #submit,
 #newgame,
-#play,
 .guess-btn {
   background-color: var(--submit-color);
   border: none;
@@ -96,7 +100,6 @@ td {
 }
 
 #newgame,
-#play,
 .guess-btn {
   background-color: var(--newgame-color);
   color: var(--white-color);
@@ -119,6 +122,72 @@ td {
 .guess-btn:active {
   background-color: var(--bingo-color);
 }
+
+.button {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button:main,
+.button:focus {
+  user-select: auto;
+}
+
+.button:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button:disabled {
+  cursor: auto;
+}
+
+.button:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+/* end button styling */
 
 .gap {
   gap: 15px;
@@ -180,10 +249,6 @@ td {
 
 .loading h2 {
   color: #19c18f;
-}
-
-#play {
-  background-color: #e76f51;
 }
 
 /*======= Responsive =======*/

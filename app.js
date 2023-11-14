@@ -37,7 +37,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-/* Randomize array in-place using Durstenfeld shuffle algorithm */
+/* Randomize array in-place using Durstenfeld 1le algorithm */
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -57,7 +57,7 @@ function replaceDuplicatesWithRandom(arr) {
     // Check if the value is a duplicate
     if (seenValues[currentValue] !== undefined) {
       // Replace the duplicate value with a random value
-      arr[i] = Math.floor(Math.random() * 100); // You can adjust the range as needed
+      arr[i] = getRandomInt(0,20); // You can adjust the range as needed
     } else {
       // Add the unique value to the result array and mark it as seen
       uniqueValues.push(currentValue);
@@ -87,7 +87,7 @@ function generateUniqueAnswer() {
   } while (usedAnswers.has(answer));
 
   usedAnswers.add(answer);
-  console.log(answer, "answer");
+  
   return answer;
 }
 
@@ -102,8 +102,6 @@ function generateButtonsHTML() {
   ];
   replaceDuplicatesWithRandom(answersSet);
   shuffleArray(answersSet);
-  console.log(answersSet);
-
   for (let i = 0; i < answersSet.length; i++) {
     buttons[i].innerHTML = answersSet[i];
   }
