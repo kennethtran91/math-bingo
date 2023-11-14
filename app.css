@@ -43,7 +43,7 @@ table {
 }
 
 td {
-  border: 1px solid black;
+  border: 1px solid #fff;
   width: 120px;
   height: 120px;
   text-align: center;
@@ -246,12 +246,7 @@ td {
   }
 }
 
-/* @keyframes fireworkPseudo {
-  0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
-  50% { width: 0.5vmin; opacity: 1; }
-  100% { width: var(--finalSize); opacity: 0; }
-}
- */
+
 .firework,
 .firework::before,
 .firework::after {
@@ -386,4 +381,19 @@ td {
   left: 70%;
   top: 60%;
   animation-delay: -0.4s;
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
