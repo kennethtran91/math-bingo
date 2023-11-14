@@ -47,6 +47,27 @@ function shuffleArray(array) {
   }
 }
 
+function replaceDuplicatesWithRandom(arr) {
+  const uniqueValues = [];
+  const seenValues = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    const currentValue = arr[i];
+
+    // Check if the value is a duplicate
+    if (seenValues[currentValue] !== undefined) {
+      // Replace the duplicate value with a random value
+      arr[i] = Math.floor(Math.random() * 100); // You can adjust the range as needed
+    } else {
+      // Add the unique value to the result array and mark it as seen
+      uniqueValues.push(currentValue);
+      seenValues[currentValue] = true;
+    }
+  }
+
+  return arr;
+}
+
 // Function to generate and set random numbers from 1 to 20 in each cell
 function generateRandomNumbers() {
   for (let i = 0; i < cells.length; i++) {
@@ -73,12 +94,15 @@ function generateUniqueAnswer() {
 function generateButtonsHTML() {
   const answersSet = [
     answer,
+    answer + 1,
+    getRandomInt(1, 20),
+    getRandomInt(1, 20),
     getRandomInt(1, 20),
     getRandomInt(0, 20),
-    getRandomInt(0, 20),
   ];
-
+  replaceDuplicatesWithRandom(answersSet);
   shuffleArray(answersSet);
+  console.log(answersSet);
 
   for (let i = 0; i < answersSet.length; i++) {
     buttons[i].innerHTML = answersSet[i];
